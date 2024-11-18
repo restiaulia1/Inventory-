@@ -46,7 +46,7 @@ export async function tambahBarang(item, harga, jumlah) {
 }
 
 export async function ambilDaftarBarang() {
-  const refDoKumen = collection(basisdata, "Inventory");
+  const refDoKumen = collection(basisdata, "Inventory", id);
   const kueri = query(refDoKumen, orderBy("item"));
   const cuplikankueri = await getDocs(kueri);
 
@@ -65,19 +65,19 @@ export async function ambilDaftarBarang() {
 }
 
 export async function hapusBarang(id) {
-  await deleteDoc(doc(basisdata, "barang", id))
+  await deleteDoc(doc(basisdata, "Inventory", id))
 }
 
-export async function ubahBarang(id, item, harga,jumlah) {
+export async function ubahBarang(id, itembaru, hargabaru,jumlahbaru) {
   await updateDoc(
-    doc(basisdata, "inventory", id),
+    doc(basisdata, "Inventory", id),
     { item: itembaru, harga: hargabaru, jumlah: jumlahbaru }
     )
   
 }
 
 export async function ambilBarang(id) {
-  const refDokumen = await doc(basisdata, "inventory",  id )
+  const refDokumen = await doc(basisdata, "Inventory",  id )
   const snapshotDokumen = await getDoc(refDokumen)
   
   return await snapshotDokumen.data()
