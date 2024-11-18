@@ -36,19 +36,19 @@
       const queryString = window.location.search
       const parameterURL = new URLSearchParams(queryString)
       const id = parameterURL.get('id')
-      const buah = await ambilBarang(id)
+      const barang = await ambilBarang(id)
       
-      $("#inputnama").val(barang.item)
-      $("#inputwarna").val(barang.harga)
-      $("#inputharga").val(barang.jumlah)
+      $("#inputitem").val(barang.item)
+      $("#inputharga").val(barang.harga)
+      $("#inputjumlah").val(barang.jumlah)
 
          // ketika tombol tambah di pencet
           $("#tombolsimpan").click(async function(event) {
             event.preventDefault()
 
-            let nama = $("#inputitem").val()
-            let warna = $("#inputharga").val()
-            let harga = $("#inputjumlah").val()
+            let item = $("#inputitem").val()
+            let harga = $("#inputharga").val()
+            let jumlah = $("#inputjumlah").val()
 
             // simpan data buah yang baru 
             await ubahBarang(id, item, harga, jumlah)

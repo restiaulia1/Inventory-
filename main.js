@@ -46,7 +46,7 @@ export async function tambahBarang(item, harga, jumlah) {
 }
 
 export async function ambilDaftarBarang() {
-  const refDoKumen = collection(basisdata, "Inventory", id);
+  const refDoKumen = collection(basisdata, "Inventory");
   const kueri = query(refDoKumen, orderBy("item"));
   const cuplikankueri = await getDocs(kueri);
 
@@ -56,7 +56,7 @@ export async function ambilDaftarBarang() {
       id: dokumen.id,
       item: dokumen.data().item,
       jumlah: dokumen.data().jumlah,
-      harga: dokumen.data().harga,
+      harga: dokumen.data().harga
 
     })
   })

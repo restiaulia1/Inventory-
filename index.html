@@ -37,11 +37,11 @@
 
 
       <script type="module">
-        import { ambilDaftarBarang } from './main.js';
+        import { hapusBarang, ambilDaftarBarang } from './main.js';
 
         $(document).ready(async function() {
           let elemenDaftarBarang = $("#daftar-barang > tbody");
-          let daftarDaftarBarang = await ambilDaftarBarang();
+          let daftarBarang = await ambilDaftarBarang();
         
         let nomor = 1
         let total = 0
@@ -53,10 +53,11 @@
               "<td>" + data.item + "</td>" +
               "<td>" + data.jumlah + "</td>" +
               "<td>" + data.harga + "</td>" +
-              "<td>" + (data.harga + data.jumlah)
+              "<td>" + data.harga * data.jumlah  + "</td>" +
               "<td>" + "<a href='#' class='me-2 link-ubah' data='" + data.id + "'>ubah</a><button class='btn btn-danger tombol-hapus' data='" + data.id + "'>hapus</button> " + "</td>" +
               "</tr>"
             )
+            total = total +(data.harga * data.juml)
             nomor = nomor + 1
           })
           
